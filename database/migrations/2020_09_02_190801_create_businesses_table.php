@@ -17,7 +17,7 @@ class CreateBusinessesTable extends Migration
             'businesses',
             function (Blueprint $table) {
                 $table->id();
-                $table->string('names')->index();
+                $table->string('name')->index();
                 $table->string('slug');
                 $table->string('image');
                 $table->text('description');
