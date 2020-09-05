@@ -30,6 +30,12 @@ h2 {
   width: 100%;
 }
 
+select.form-input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 .form-label {
   cursor: pointer;
   font-size: 12px;

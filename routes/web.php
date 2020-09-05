@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,21 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(
                         Route::get('', [CategoryController::class, 'show'])->name('show');
                         Route::put('', [CategoryController::class, 'update'])->name('update');
                         Route::delete('', [CategoryController::class, 'destroy'])->name('destroy');
+                    }
+                );
+            }
+        );
+
+        Route::prefix('users')->name('users.')->group(
+            function () {
+                Route::get('', [UserController::class, 'index'])->name('index');
+
+                Route::prefix('{user}')->group(
+                    function () {
+                        Route::get('', [UserController::class, 'show'])->name('show');
+                        Route::put('', [UserController::class, 'update'])->name('update');
+                        Route::delete('', [UserController::class, 'destroy'])->name('destroy');
+                        Route::post('restore', [UserController::class, 'restore'])->name('restore');
                     }
                 );
             }

@@ -19,6 +19,7 @@
         <div class="flex-1 text-2xl leading-none"><a href="{{ route('admin.dashboard') }}" class="hover:underline">Panel administrativo</a></div>
         
         <div class="flex-none mr-4"><a href="{{ route('admin.categories.index') }}" class="link-basic">Categorías</a></div>
+        <div class="flex-none mr-4"><a href="{{ route('admin.users.index') }}" class="link-basic">Usuarios</a></div>
         <div class="flex-none">
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
