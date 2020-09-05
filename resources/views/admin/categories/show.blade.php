@@ -3,14 +3,15 @@
 @section('content')
 <h1>{{ $category->name }}</h1>
 
-
 <form
   action="{{ route('admin.categories.update', $category->id) }}"
   method="POST"
   enctype="multipart/form-data"
-  class="max-w-2xl p-4 border">
+  class="max-w-2xl p-4 border mb-8">
   @csrf
   @method('PUT')
+
+  <h2>Actualizar categoría</h2>
   
   <p class="mb-4">Completa correctamente el formulario para actualizar esta categoría</p>
 
@@ -37,5 +38,20 @@
 
   <p class="text-center"><button class="btn-main text-2xl">Actualizar</button></p>
 
+</form>
+
+<form
+  action="{{ route('admin.categories.destroy', $category->id) }}"
+  method="POST"
+  class="max-w-2xl p-4 border"
+  onsubmit="return confirm('¿Estás seguro?');">
+  @csrf
+  @method('DELETE')
+
+  <h2>Eliminar categoría</h2>
+
+  <p>Esta acción es irreversible</p>
+
+  <button class="btn-delete">Eliminar</button>
 </form>
 @endsection

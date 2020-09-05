@@ -3,8 +3,20 @@ h1 {
   font-size: 36px;
 }
 
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
 .btn-main {
   background-color: #4299e1;
+  color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.btn-delete {
+  background-color: #cc0000;
   color: #fff;
   padding: 4px;
   border-radius: 4px;
