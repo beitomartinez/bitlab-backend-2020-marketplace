@@ -11,10 +11,15 @@
 @if (count($categories) == 0)
 <p>No hay categorías aún</p>
 @else
-  <table class="table-bordered w-full">
+  <table class="table-bordered w-full max-w-md">
+    <tr>
+      <th class="text-left" colspan="2">Nombre</th>
+      <th class="text-left">Negocios</th>
+    </tr>
     @foreach ($categories as $category)
     <tr>
-      <td><a href="{{ route('admin.categories.show', $category->id) }}" clas="link-basic">{{ $category->name }}</a></td>
+      <td class="w-16"><a href="{{ route('admin.categories.show', $category->id) }}" clas="link-basic"><img src="{{ asset("storage/categories/{$category->image}") }}"></a></td>
+      <td><a href="{{ route('admin.categories.show', $category->id) }}" class="link-basic">{{ $category->name }}</a></td>
       <td>{{ $category->businesses_count }}</td>
     </tr>
     @endforeach

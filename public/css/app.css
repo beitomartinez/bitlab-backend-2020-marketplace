@@ -32,3 +32,14 @@ h1 {
   text-decoration: underline;
 }
 
+.table-bordered td,
+.table-bordered th {
+  border-bottom: solid 1px #ccc;
+  padding: 5px;
+}
+
+.table-bordered tr:last-of-type td,
+.table-bordered tr:last-of-type th {
+  border-bottom: none;
+}
+

@@ -31,3 +31,16 @@ h1 {
     text-decoration: underline;
   }
 }
+
+.table-bordered {
+  td, th {
+    border-bottom: solid 1px #ccc;
+    padding: 5px;
+  }
+
+  tr:last-of-type {
+    td, th {
+      border-bottom: none;
+    }
+  }
+}
