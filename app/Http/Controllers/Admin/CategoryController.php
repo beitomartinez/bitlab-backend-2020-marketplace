@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -25,24 +26,24 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:191',
+            'image' => 'required|image|max:2048'
+        ]);
+
+        $category = Category::create([
+            'name' => $request->name,
+            'image' => basename($request->image->store('categories'))
+        ]);
+
+        return redirect()->route('admin.categories.show', $category->id);
     }
 
     /**
