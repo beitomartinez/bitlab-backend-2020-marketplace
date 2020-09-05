@@ -52,20 +52,9 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category) : View
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        //
+        return view('admin.categories.show', ['category' => $category]);
     }
 
     /**
@@ -77,7 +66,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:191',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        $category->fill($request->only('name'));
+
+        if ($request->hasFile('image')) {
+            $category->image = basename($request->image->store('categories'));
+        }
+
+        $category->save();
+
+        return redirect()->route('admin.categories.show', $category->id);
     }
 
     /**

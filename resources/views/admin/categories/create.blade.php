@@ -9,7 +9,7 @@
 
   <div class="mb-2">
     <p class="mb-1"><label for="name" class="form-label">Nombre *</label></p>
-    <input name="name" id="name" type="text" class="form-input" placeholder="Comidas, Cafetería, Panadería, etc" required maxlength="191">
+    <input name="name" id="name" type="text" class="form-input" placeholder="Comidas, Cafetería, Panadería, etc" required maxlength="191" value="{{ old('name') }}">
     @error('name')
     <p class="text-sm text-red-500">{{ $message }}</p>
     @enderror
