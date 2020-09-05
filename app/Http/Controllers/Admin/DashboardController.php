@@ -15,6 +15,6 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        echo "yes!";
+        return view('admin.dashboard');
     }
 }

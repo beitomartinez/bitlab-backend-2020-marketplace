@@ -16,7 +16,7 @@
   <body>
     <div class="container mx-auto">
       <div class="flex flex-row items-center py-4 mb-4 border-b border-blue-500">
-        <div class="flex-1 text-3xl font-bold"><a href="{{ route('home') }}" class="hover:underline">MarketPlace</a></div>
+        <div class="flex-1 text-2xl leading-none"><a href="{{ route('home') }}" class="hover:underline">MarketPlace</a></div>
         @guest
           <div class="flex-none mr-4"><a class="link-basic" href="{{ route('login') }}">Iniciar sesión</a></div>
           <div class="flex-none mr-4"><a class="link-basic" href="{{ route('register') }}">Registrarme</a></div>
