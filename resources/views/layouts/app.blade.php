@@ -18,15 +18,18 @@
       <div class="flex flex-row items-center py-4 mb-4 border-b border-blue-500">
         <div class="flex-1 text-3xl font-bold"><a href="{{ route('home') }}" class="hover:underline">MarketPlace</a></div>
         @guest
-          <div class="flex-none mr-4"><a class="text-blue-500 hover:underline" href="{{ route('login') }}">Iniciar sesión</a></div>
-          <div class="flex-none mr-4"><a class="text-blue-500 hover:underline" href="{{ route('register') }}">Registrarme</a></div>
+          <div class="flex-none mr-4"><a class="link-basic" href="{{ route('login') }}">Iniciar sesión</a></div>
+          <div class="flex-none mr-4"><a class="link-basic" href="{{ route('register') }}">Registrarme</a></div>
         @else
           <div class="flex-none mr-4">Hola, {{ Auth::user()->name }}</div>
+          @if (auth()->user()->is_admin)
+          <div class="flex-none mr-4"><a href="{{ route('admin.dashboard') }}" class="link-basic">Administración</a></div>
+          @endif
           <!-- AQUI VAN LOS ENLACES -->
           <div class="flex-none">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
-              <button class="text-blue-500 hover:underline">Cerrar sesión</button>
+              <button class="link-basic">Cerrar sesión</button>
           </form>
           </div>
         @endguest

@@ -9,10 +9,20 @@
   border: solid 1px #333;
   padding: 4px;
   border-radius: 4px;
+  display: block;
+  width: 100%;
 }
 
 .form-label {
   cursor: pointer;
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.link-basic {
+  color: #4299e1;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
