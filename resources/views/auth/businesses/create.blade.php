@@ -5,7 +5,7 @@
 <p class="mb-4">Completa correctamente el formulario para crear tu negocio.</p>
 
 <form
-  action="{{ route('businesses.store') }}"
+  action="{{ route('my-businesses.store') }}"
   class="p-4 border rounded max-w-4xl"
   enctype="multipart/form-data"
   method="POST">

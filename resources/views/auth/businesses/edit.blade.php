@@ -5,7 +5,7 @@
 <p class="mb-4">Completa correctamente el formulario para acutualizar tu negocio.</p>
 
 <form
-  action="{{ route('businesses.update', $business->id) }}"
+  action="{{ route('my-businesses.update', $business->id) }}"
   class="p-4 border rounded max-w-4xl"
   enctype="multipart/form-data"
   method="POST">
