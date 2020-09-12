@@ -37,7 +37,12 @@ class Business extends Model
     }
 
 
-    /* RELATIONSHIP */
+    /* RELATIONSHIPS */
+
+    public function category() : BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function state() : BelongsTo
     {

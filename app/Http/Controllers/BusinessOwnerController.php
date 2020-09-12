@@ -77,7 +77,18 @@ class BusinessOwnerController extends Controller
         $newBusiness->image = basename($request->image->store('businesses'));
         $newBusiness->save();
 
-        return redirect()->route('auth.businesses.edit', $newBusiness->id);
+        return redirect()->route('my-businesses.edit', $newBusiness->id);
+    }
+
+    public function index(Request $request)
+    {
+        $businesses = Business::where('user_id', auth()->id())->with([
+            'category:id,name',
+            'state:id,name',
+            'city:id,name',
+        ])->paginate(2);
+
+        return view('auth.businesses.index', compact('businesses'));
     }
 
     /**
