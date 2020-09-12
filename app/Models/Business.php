@@ -21,6 +21,8 @@ class Business extends Model
         'address',
         'is_delivery',
         'is_takeout',
+        'city_id',
+        'state_id',
         'category_id',
     ];
 

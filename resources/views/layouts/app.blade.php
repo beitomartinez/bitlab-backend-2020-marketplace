@@ -25,7 +25,7 @@
           @if (auth()->user()->is_admin)
           <div class="flex-none mr-4"><a href="{{ route('admin.dashboard') }}" class="link-basic">Administración</a></div>
           @endif
-          <!-- AQUI VAN LOS ENLACES -->
+          <div class="flex-none mr-4"><a href="{{ route('businesses.create') }}" class="link-basic">Crear negocio</a></div>
           <div class="flex-none">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf

@@ -1,58 +1,26 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/inicio', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(
-    function () {
-        Route::get('dashboard', 'Admin\DashboardController')->name('dashboard');
-
-        Route::prefix('categories')->name('categories.')->group(
+Route::prefix('negocios')->name('businesses.')->group(
+    function() {
+        Route::get('crear', [BusinessController::class, 'create'])->name('create');
+        Route::post('guardar', [BusinessController::class, 'store'])->name('store');
+        Route::prefix('{business}')->group(
             function () {
-                Route::get('', [CategoryController::class, 'index'])->name('index');
-                Route::view('create', 'admin.categories.create')->name('create');
-                Route::post('store', [CategoryController::class, 'store'])->name('store');
-
-                Route::prefix('{category}')->group(
-                    function () {
-                        Route::get('', [CategoryController::class, 'show'])->name('show');
-                        Route::put('', [CategoryController::class, 'update'])->name('update');
-                        Route::delete('', [CategoryController::class, 'destroy'])->name('destroy');
-                    }
-                );
-            }
-        );
-
-        Route::prefix('users')->name('users.')->group(
-            function () {
-                Route::get('', [UserController::class, 'index'])->name('index');
-
-                Route::prefix('{user}')->group(
-                    function () {
-                        Route::get('', [UserController::class, 'show'])->name('show');
-                        Route::put('', [UserController::class, 'update'])->name('update');
-                        Route::delete('', [UserController::class, 'destroy'])->name('destroy');
-                        Route::post('restore', [UserController::class, 'restore'])->name('restore');
-                    }
-                );
+                Route::get('', [BusinessController::class, 'show'])->name('show');
+                Route::get('editar', [BusinessController::class, 'edit'])->name('edit');
+                Route::put('actualizar', [BusinessController::class, 'update'])->name('update');
             }
         );
     }
 );
+
+require base_path('routes/web-admin.php');
