@@ -1,13 +1,27 @@
 <?php
 
-use App\Http\Controllers\BusinessOwnerController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\{
+    BusinessOwnerController,
+    BusinessController,
+    HomeController
+};
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/inicio', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('negocios')->name('businesses.')->group(
+    function() {
+        Route::get('', [BusinessController::class, 'index'])->name('index');
+        Route::prefix('{business}')->group(
+            function () {
+                Route::get('', [BusinessController::class, 'show'])->name('show');
+            }
+        );
+    }
+);
 
 Route::prefix('mis-negocios')->name('my-businesses.')->group(
     function() {

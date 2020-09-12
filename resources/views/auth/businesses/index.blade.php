@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Mis negocios</h1>
+<div class="flex flex-row mb-4 items-center">
+  <h1 class="flex-1">Mis negocios</h1>
+  <div class="flex-none ml-2"><a href="{{ route('my-businesses.create') }}" class="btn-main text-xl">Crear negocio</a></div>
+</div>
 
 @if (count($businesses) == 0)
 <p class="text-center text-gray-700">No tienes negocios creados. <a href="{{ route('my-businesses.create') }}" class="link-basic">¿Por qué no creas uno?</a></p>
@@ -32,7 +35,7 @@
   </tr>
   @foreach ($businesses as $business)
     <tr>
-      <td><a href="{{ route('my-businesses.show', $business->id) }}" class="link-basic">{{ $business->name }}</a></td>
+      <td><a href="{{ route('my-businesses.edit', $business->id) }}" class="link-basic">{{ $business->name }}</a></td>
       <td>{{ $business->category->name }}</td>
       <td>{{ "{$business->city->name}, {$business->state->name}" }}</td>
     </tr>
