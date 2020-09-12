@@ -41,6 +41,15 @@ Route::prefix('mis-negocios')->name('my-businesses.')->group(
                         Route::get('', [BusinessProductController::class, 'index'])->name('index');
                         Route::get('crear', [BusinessProductController::class, 'create'])->name('create');
                         Route::post('guardar', [BusinessProductController::class, 'store'])->name('store');
+
+                        Route::prefix('{product}')->group(
+                            function () {
+                                Route::get('', [BusinessProductController::class, 'show'])->name('show');
+                                Route::get('editar', [BusinessProductController::class, 'edit'])->name('edit');
+                                Route::put('actualizar', [BusinessProductController::class, 'update'])->name('update');
+                                Route::put('borrar', [BusinessProductController::class, 'destroy'])->name('destroy');
+                            }
+                        );
                     }
                 );
             }
