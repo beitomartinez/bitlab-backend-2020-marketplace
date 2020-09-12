@@ -32,12 +32,14 @@
     <th class="text-left">Nombre</th>
     <th class="text-left">Categoría</th>
     <th class="text-left">Ubicación</th>
+    <th class="text-left">Acciones</th>
   </tr>
   @foreach ($businesses as $business)
     <tr>
       <td><a href="{{ route('my-businesses.edit', $business->id) }}" class="link-basic">{{ $business->name }}</a></td>
       <td>{{ $business->category->name }}</td>
       <td>{{ "{$business->city->name}, {$business->state->name}" }}</td>
+      <td><a href="{{ route('my-businesses.products.index', $business->id) }}" class="link-basic">Administrar productos</a></td>
     </tr>
   @endforeach
 </table>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     BusinessOwnerController,
     BusinessController,
+    BusinessProductController,
     HomeController
 };
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,14 @@ Route::prefix('mis-negocios')->name('my-businesses.')->group(
                 Route::get('editar', [BusinessOwnerController::class, 'edit'])->name('edit');
                 Route::put('actualizar', [BusinessOwnerController::class, 'update'])->name('update');
                 Route::put('borrar', [BusinessOwnerController::class, 'destroy'])->name('destroy');
+
+                Route::prefix('productos')->name('products.')->group(
+                    function () {
+                        Route::get('', [BusinessProductController::class, 'index'])->name('index');
+                        Route::get('crear', [BusinessProductController::class, 'create'])->name('create');
+                        Route::post('guardar', [BusinessProductController::class, 'store'])->name('store');
+                    }
+                );
             }
         );
     }

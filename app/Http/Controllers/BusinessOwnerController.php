@@ -86,7 +86,7 @@ class BusinessOwnerController extends Controller
             'category:id,name',
             'state:id,name',
             'city:id,name',
-        ])->paginate(2);
+        ])->paginate(10);
 
         return view('auth.businesses.index', compact('businesses'));
     }
