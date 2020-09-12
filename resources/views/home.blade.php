@@ -7,8 +7,21 @@
 
     <form action="{{ route('businesses.index') }}" method="GET">
       <p class="text-sm">¿Qué estás buscando?</p>
-      <div class="flex flex-row max-w-md mx-auto">
+      <div class="flex flex-row max-w-xl mx-auto">
         <div class="flex-1"><input type="text" class="form-input"></div>
+        <div class="flex-none ml-2">
+          <select name="city_id" id="city_id" class="form-input">
+            <option value="">En todo el país</option>
+            
+            @foreach ($states as $state)
+            <optgroup label="{{ $state->name }}">
+              @foreach ($state->cities as $city)
+              <option value="{{ $city->id }}">{{ $city->name }}</option>
+              @endforeach
+            </optgroup>
+            @endforeach
+          </select>
+        </div>
         <div class="flex-none ml-2"><button class="btn-main">Buscar</button></div>
       </div>
     </form>
