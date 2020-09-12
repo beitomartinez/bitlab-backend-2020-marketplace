@@ -54,4 +54,9 @@ class Business extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

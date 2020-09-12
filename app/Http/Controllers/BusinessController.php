@@ -10,13 +10,25 @@ class BusinessController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Business::select(['id', 'name', 'slug', 'image']);
+        $query = Business::select(['id', 'name', 'slug', 'image'])->with(
+            'products:name,business_id'
+        );
 
         if (!is_null($request->keyword)) {
             $query->where(
                 function($subquery) use ($request) {
                     $subquery->where('name', 'like', "%$request->keyword%")
-                        ->orWhere('description', 'like', "%$request->keyword%");
+                        ->orWhere('description', 'like', "%$request->keyword%")
+                        ->orWhereHas(
+                            'products',
+                            function ($productsQuery) use ($request) {
+                                $productsQuery->where(
+                                    'name',
+                                    'like',
+                                    "%$request->keyword%"
+                                );
+                            }
+                        );
                 }
             );
         }

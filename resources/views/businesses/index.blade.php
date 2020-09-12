@@ -31,6 +31,7 @@
       <a href="{{ route('businesses.show', $business->slug) }}" class="block rounded-lg overflow-hidden border p-2 link-basic">
         <img src="{{ asset("storage/businesses/{$business->image}") }}" class="mb-4">
         <p>{{ $business->name }}</p>
+        <p class="text-sm text-black"><span class="font-bold">Productos:</span> {{ implode(', ', $business->products->pluck('name')->toArray()) }}</p>
       </a>
     </div>
     @endforeach
