@@ -5,10 +5,12 @@
   <div class="text-center mb-8">
     <h1 class="mb-8">¡Bienvenidos!</h1>
 
-    <form action="{{ route('businesses.index') }}" method="GET">
-      <p class="text-sm">¿Qué estás buscando?</p>
-      <div class="flex flex-row max-w-xl mx-auto">
-        <div class="flex-1"><input type="text" class="form-input"></div>
+    <form action="{{ route('businesses.index') }}" method="GET" class="max-w-xl mx-auto">
+      <p class="text-sm text-left">¿Qué estás buscando?</p>
+      <div class="flex flex-row">
+        <div class="flex-1">
+          <input type="text" class="form-input" name="keyword">
+        </div>
         <div class="flex-none ml-2">
           <select name="city_id" id="city_id" class="form-input">
             <option value="">En todo el país</option>
