@@ -17,7 +17,7 @@
     @foreach($business->schedules as $schedule)
     <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-2">
       <a href="{{ route('my-businesses.schedules.show', [$business->id, $schedule->id]) }}" class="block rounded-lg overflow-hidden border p-2 link-basic">
-        <p>{{ $schedule->name }}</p>
+        <p>{{ __("days.{$schedule->day}") . ": $schedule->opens_at - $schedule->closes_at" }}</p>
       </a>
     </div>
     @endforeach

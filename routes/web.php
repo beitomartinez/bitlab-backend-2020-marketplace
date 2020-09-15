@@ -60,14 +60,14 @@ Route::prefix('mis-negocios')->name('my-businesses.')->group(
                         Route::get('crear', [BusinessScheduleController::class, 'create'])->name('create');
                         Route::post('guardar', [BusinessScheduleController::class, 'store'])->name('store');
 
-                        // Route::prefix('{product}')->group(
-                        //     function () {
-                        //         Route::get('', [BusinessScheduleController::class, 'show'])->name('show');
-                        //         Route::get('editar', [BusinessScheduleController::class, 'edit'])->name('edit');
-                        //         Route::put('actualizar', [BusinessScheduleController::class, 'update'])->name('update');
-                        //         Route::put('borrar', [BusinessScheduleController::class, 'destroy'])->name('destroy');
-                        //     }
-                        // );
+                        Route::prefix('{schedule}')->group(
+                            function () {
+                                Route::get('', [BusinessScheduleController::class, 'show'])->name('show');
+                                Route::get('editar', [BusinessScheduleController::class, 'edit'])->name('edit');
+                                Route::put('actualizar', [BusinessScheduleController::class, 'update'])->name('update');
+                                Route::put('borrar', [BusinessScheduleController::class, 'destroy'])->name('destroy');
+                            }
+                        );
                     }
                 );
             }
