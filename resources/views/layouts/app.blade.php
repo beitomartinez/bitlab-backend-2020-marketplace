@@ -44,5 +44,11 @@
       @section('scripts')
       @show
     </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr(".time-picker", { enableTime: true, noCalendar: true, dateFormat: "H:i", });
+    </script>
   </body>
 </html>
