@@ -24,6 +24,9 @@
             @endforeach
           </select>
         </div>
+        <div class="flex-none ml-2">
+          <label class="form-label"><input type="checkbox" name="open_now"> Abierto ahorita</label>
+        </div>
         <div class="flex-none ml-2"><button class="btn-main">Buscar</button></div>
       </div>
     </form>
